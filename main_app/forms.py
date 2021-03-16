@@ -8,8 +8,6 @@ class SignUpForm(UserCreationForm):
     first_name = forms.CharField(max_length=32)
     last_name=forms.CharField(max_length=32)
     city = forms.CharField(max_length=64)
-    password1=forms.CharField()
-    password2=forms.CharField()
     
     class Meta(UserCreationForm.Meta):
       model = User
