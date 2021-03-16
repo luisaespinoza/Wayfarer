@@ -27,3 +27,7 @@ def signup(request):
   form = SignUpForm()
   context = {'form':form, 'error_message':error_message}
   return render(request, 'index.html', {'form': form})
+
+
+def profile(request):
+  return render(request, "accounts/profile.html")
