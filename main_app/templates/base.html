@@ -24,7 +24,7 @@
             <li><a href="{% url 'logout' %}">Log Out</a></li>
           {% else %}
             <li>{% include 'registration/signup.html' %}</li>
-            <li><a href="{% url 'login' %}">Log In  </a></li>
+            <li>{% include 'registration/login.html' %}</li>
           {% endif %}
         </ul>
       </div>
