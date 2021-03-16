@@ -100,7 +100,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-AUTH_USER_MODEL = "wayfarer_project.User"
+AUTH_USER_MODEL = "main_app.User"
 
 
 # Internationalization
