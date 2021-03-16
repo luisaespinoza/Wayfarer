@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block 'content' %}
+
+  <!-- Modal Trigger -->
+  <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+
+
+      {% comment %} Your django form here.... {% endcomment %}
+      <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" class="btn" value="login">
+        <input type="hidden" name="next" value="{{ next }}">
+      </form>
+    {% comment %} Your django form here^^^^^^ {% endcomment %}
+
+
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
+
+
+{% endblock  %}
