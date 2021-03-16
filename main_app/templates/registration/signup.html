@@ -8,7 +8,7 @@
 
       <form id='id_signup' method="post" action="{% url 'signup' %}">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ sign_up_form.as_p }}
         <input type="submit" class="btn" value="sign up">
         <input type="hidden" name="next" value="{{ next }}">
       </form>
