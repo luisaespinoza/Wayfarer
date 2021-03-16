@@ -1,22 +1,17 @@
-{% extends 'base.html' %}
 
-{% block 'content' %}
 
-  <!-- Modal Trigger -->
-  <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
-  <!-- Modal Structure -->
+  <a class="waves-effect waves-light btn modal-trigger" data-target="modal1">Sign Up</a>
+
   <div id="modal1" class="modal">
     <div class="modal-content">
 
 
-      {% comment %} Your django form here.... {% endcomment %}
-      <form method="post" action="{% url 'sign up' %}">
+      <form id='id_signup' method="post" action="{% url 'signup' %}">
         {% csrf_token %}
         {{ form.as_p }}
         <input type="submit" class="btn" value="sign up">
         <input type="hidden" name="next" value="{{ next }}">
       </form>
-    {% comment %} Your django form here^^^^^^ {% endcomment %}
 
 
     </div>
@@ -24,3 +19,9 @@
       <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
     </div>
   </div>
+
+  <script>
+    var elems = document.querySelectorAll('.modal');
+    var instances = M.Modal.init(elems, {});
+
+  </script>
