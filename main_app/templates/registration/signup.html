@@ -1,22 +1,22 @@
 
 
-  <a class="waves-effect waves-light btn modal-trigger" data-target="modal1">Sign Up</a>
+  <a class='waves-effect waves-light btn modal-trigger' data-target='modal1'>Sign Up</a>
 
-  <div id="modal1" class="modal">
-    <div class="modal-content">
+  <div id='modal1' class='modal'>
+    <div class='modal-content'>
 
 
-      <form id='id_signup' method="post" action="{% url 'signup' %}">
+      <form id='id_signup' method='post' action='{% url 'signup' %}'>
         {% csrf_token %}
         {{ sign_up_form.as_p }}
-        <input type="submit" class="btn" value="sign up">
-        <input type="hidden" name="next" value="{{ next }}">
+        <input type='submit' class='btn' value='sign up'>
+        <input type='hidden' name='next' value='{{ next }}'>
       </form>
 
 
     </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-close waves-effect waves-green btn-flat"></a>
+    <div class='modal-footer'>
+      <a href='#!' class='modal-close waves-effect waves-green btn-flat'></a>
     </div>
   </div>
 
