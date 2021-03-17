@@ -3,22 +3,50 @@
 
 {% block content %}
 
-<div class="row">
-  <div class="col s6">
-    <div class="card">
-      <div class="card-content">
-        <span class="card-title">{{ mouse.name }}</span>
-        <p>Breed: {{ mouse.breed }}</p>
-        <p>Description: {{ mouse.description }}</p>
-        {% if mouse.age > 0 %}
-          <p>Age: {{ mouse.age }}</p>
-        {% else %}
-          <p>Age: Kitten</p>
-        {% endif %}
+<style>
+.profile {
+  margin-top:40px;
+}
+
+.profile .card {
+  border:2px solid #777;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+}
+</style>
+
+
+<div class="profile">
+  <div class="row">
+    <div class="col s6">
+      <!-- user and city content-->
+      <div class="card">
+        <div class="card-content">
+          <a href="#">WildChild</a>&nbsp;&nbsp; |&nbsp;&nbsp; <a href="#">San Francisco</a>
+        </div>
+      </div>
+    </div>
+    <div class="col s6">
+    <!-- edit profile link-->
+      <div class="card">
+        <div class="card-content right-align">
+          <a href="#">Edit Profile</a>
+          <li>{% include 'accounts/profile_edit.html' %}</li>
+        </div>
       </div>
     </div>
   </div>
+  <!-- begin the history container / content-->
+  <div class="row">
+    <div class="col s12" style="border:2px solid #000;padding:60px;">
+      <div class="history">
+        History
+      </div>
+      <div class="recent-post" style="border:2px solid #000; margin-top:20px; padding:20px; ">Most recent Lorem ipsum, dolor sit amet consectetur adipisicing elit. Pariatur repudiandae, nihil cupiditate consequatur debitis explicabo voluptas tempora incidunt fugit optio!</div>
+      <div class="recent-post" style="border:2px solid #000; margin-top:20px; padding:20px; ">Most recent Lorem ipsum, dolor sit amet consectetur adipisicing elit. Pariatur repudiandae, nihil cupiditate consequatur debitis explicabo voluptas tempora incidunt fugit optio!</div>
+      <div class="recent-post" style="border:2px solid #000; margin-top:20px; padding:20px; ">Most recent Lorem ipsum, dolor sit amet consectetur adipisicing elit. Pariatur repudiandae, nihil cupiditate consequatur debitis explicabo voluptas tempora incidunt fugit optio!</div>
+    </div>  
+  </div>
 </div>
-
 
 {% endblock  %}
