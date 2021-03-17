@@ -7,7 +7,6 @@
       <form id='id_signup' method="post" action="{% url 'profile_edit' %}">
         {% csrf_token %}
         {{ form.as_p }}
-        <h2>print</h2>
         <input type="submit" class="btn" value="Save">
         <input type="hidden" name="next" value="{{ next }}">
       </form>

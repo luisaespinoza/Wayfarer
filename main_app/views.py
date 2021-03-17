@@ -1,14 +1,26 @@
 from django.shortcuts import render ,redirect
-from django.contrib.auth import login
+from django.contrib.auth import login, get_user_model
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
-from main_app.forms import SignUpForm
+from main_app.forms import SignUpForm, EditUserForm
 from django.contrib.auth.decorators import login_required
+# from django.contrib.auth.models import User
+from .models import User
 # Create your views here.
-
+User = get_user_model()
 def home(request):
   sign_up_form =SignUpForm()
+
   login_form = AuthenticationForm
   return render(request, "index.html", {'sign_up_form' :sign_up_form, 'login_form': login_form()})
+
+def user_login(request):
+  error_message = ''
+  if request.method == 'POST':
+    user = AuthenticationForm(request.POST)
+    user = SignUpForm(request.POST)
+    print(user)
+    login(request,user)
+    return redirect('home')
 
 
 def signup(request):
@@ -16,11 +28,8 @@ def signup(request):
   if request.method == 'POST':
     form = SignUpForm(request.POST)
     if form.is_valid():
-      print("form valid")
       user = form.save()
-      print("saved??")
       login(request, user)
-      print("logged in?")
       return redirect('home')
   else:
     error_message = 'Invalid sign up - try again'
@@ -33,13 +42,10 @@ def signup(request):
 def profile_edit(request):
   error_message =''
   if request.method == 'POST':
-    form = SignUpForm(request.POST)
+    form = EditUserForm(request.POST,instance=request.user)
     if form.is_valid():
-      print("form valid")
       user = form.save()
-      print("saved??")
       login(request, user)
-      print("logged in?")
       return redirect('home')
   else:
     error_message = 'Invalid sign up - try again'
@@ -50,8 +56,12 @@ def profile_edit(request):
 
 
 def profile(request):
-  form = SignUpForm()
-  return render(request, "accounts/profile.html", { "form": form })
+  print(request)
+  user = get_user_model().objects.get(username=request.user)
+  user_fields= ['username','email','first_name','last_name', 'city']
+  # for field in user_fields:
+  form = EditUserForm(initial={'city': user.city, 'email':user.email, 'first_name': user.first_name, 'last_name':user.last_name,'city':user.city , 'username':user.username})
+  return render(request, "accounts/profile.html", { "form": form, 'user': user })
 
 
 #  @login_required
