@@ -13,25 +13,7 @@ class SignUpForm(UserCreationForm):
       model = User
       fields = UserCreationForm.Meta.fields + ('email','first_name','last_name','city')
 
-<<<<<<< HEAD
-class EditForm(UserChangeForm):
-  class Meta:
-    model = User
-    fields = 
-  # new fields here
-
-  class Meta(UserChangeForm):
-    model = User
-    fields = UserChangeForm.Meta.fields + ('new fields here')
-=======
-# class EditForm(UserCreationForm):
-#     email=forms.EmailField(max_length=64)
-#     username = forms.CharField()
-#     first_name = forms.CharField(max_length=32)
-#     last_name=forms.CharField(max_length=32)
-#     city = forms.CharField(max_length=64)
-
-#     class Meta(UserCreationForm.Meta):
-#       model = User
-#       fields = UserCreationForm.Meta.fields + ('email','first_name','last_name','city')
->>>>>>> submain
+class EditUserForm(forms.ModelForm):
+    class Meta(UserChangeForm.Meta):
+      model = User
+      fields = ('email','username','first_name','last_name','city')
