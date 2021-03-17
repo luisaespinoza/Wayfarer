@@ -13,3 +13,12 @@ class SignUpForm(UserCreationForm):
       model = User
       fields = UserCreationForm.Meta.fields + ('email','first_name','last_name','city')
 
+class EditForm(UserChangeForm):
+  class Meta:
+    model = User
+    fields = 
+  # new fields here
+
+  class Meta(UserChangeForm):
+    model = User
+    fields = UserChangeForm.Meta.fields + ('new fields here')
