@@ -6,7 +6,7 @@
 
 
       {% comment %} Your django form here.... {% endcomment %}
-      <form method="post" action="{% url 'login' %}">
+      <form method="post" action="{% url 'user_login' %}">
         {% csrf_token %}
         {{ login_form.as_p }}
         <input type="submit" class="btn" value="login">

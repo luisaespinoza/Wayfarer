@@ -10,6 +10,14 @@ def home(request):
   login_form = AuthenticationForm
   return render(request, "index.html", {'sign_up_form' :sign_up_form, 'login_form': login_form()})
 
+def user_login(request):
+  error_message = ''
+  if request.method == 'POST':
+    user(request.POST)
+    if user.is_valid():
+      login(request, user)
+      return redirect('home')
+
 
 def signup(request):
   error_message =''
