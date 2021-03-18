@@ -1,20 +1,20 @@
-  <a class="waves-effect waves-light btn modal-trigger" data-target="modal3">Edit</a>
+  <a class='waves-effect waves-light btn modal-trigger' data-target='modal3'>Edit Profile</a>
 
-  <div id="modal3" class="modal">
-    <div class="modal-content">
+  <div id='modal3' class='modal'>
+    <div class='modal-content'>
 
 
-      <form id='id_signup' method="post" action="{% url 'profile_edit' %}">
+      <form id='id_signup' method='post' action='{% url 'profile_edit' %}'>
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" class="btn" value="Save">
-        <input type="hidden" name="next" value="{{ next }}">
+        <input type='submit' class='btn' value='Save'>
+        <input type='hidden' name='next' value='{{ next }}'>
       </form>
 
 
     </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-close waves-effect waves-green btn-flat"></a>
+    <div class='modal-footer'>
+      <a href='#!' class='modal-close waves-effect waves-green btn-flat'></a>
     </div>
   </div>
 

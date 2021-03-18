@@ -4,15 +4,12 @@
   <div id='modal2' class='modal'>
     <div class='modal-content'>
 
-
-      {% comment %} Your django form here.... {% endcomment %}
       <form method='post' action='{% url 'login' %}'>
         {% csrf_token %}
         {{ login_form.as_p }}
         <input type='submit' class='btn' value='login'>
         <input type='hidden' name='next' value='{{ next }}'>
       </form>
-    {% comment %} Your django form here^^^^^^ {% endcomment %}
 
 
     </div>
