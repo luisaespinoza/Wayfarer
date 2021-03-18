@@ -6,12 +6,16 @@ from django.contrib.auth.decorators import login_required
 # from django.contrib.auth.models import User
 from .models import User
 # Create your views here.
+
+
 User = get_user_model()
+
+
 def home(request):
   sign_up_form =SignUpForm()
-
   login_form = AuthenticationForm
-  return render(request, 'index.html', {'sign_up_form' :sign_up_form, 'login_form': login_form()})
+  context = {'sign_up_form' :sign_up_form, 'login_form': login_form()}
+  return render(request, 'index.html', context)
 
 def user_login(request):
   error_message = ''
@@ -35,10 +39,10 @@ def signup(request):
     error_message = 'Invalid sign up - try again'
   form = SignUpForm()
   context = {'form':form, 'error_message':error_message}
-  return render(request, 'index.html', {'form': form})
+  return render(request, 'index.html', context)
 
 
-
+@login_required
 def profile_edit(request):
   error_message =''
   if request.method == 'POST':
@@ -51,17 +55,17 @@ def profile_edit(request):
     error_message = 'Invalid sign up - try again'
   form = SignUpForm()
   context = {'form':form, 'error_message':error_message}
-  
-  return render(request, 'index.html', {'form': form})
+  return render(request, 'index.html', context)
 
-
+@login_required
 def profile(request):
   print(request)
   user = get_user_model().objects.get(username=request.user)
   user_fields= ['username','email','first_name','last_name', 'city']
   # for field in user_fields:
   form = EditUserForm(initial={'city': user.city, 'email':user.email, 'first_name': user.first_name, 'last_name':user.last_name,'city':user.city , 'username':user.username})
-  return render(request, 'accounts/profile.html', { 'form': form, 'user': user })
+  context = {'form': form, 'user': user}
+  return render(request, 'accounts/profile.html', context)
 
 
 #  @login_required
