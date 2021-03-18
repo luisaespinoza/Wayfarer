@@ -3,22 +3,22 @@
 
 {% block content %}
 
-<div class="post">
+<div class='post'>
 
   <!-- author / city / date created container -->
-  <div class="row">
-    <div class="col s12" style="border:2px solid #000; padding:20px 10px 20px 10px;">
-      <div class="col s4">{{post.title}}&nbsp;&nbsp; |&nbsp;&nbsp; <a href='{% url 'profile' %}'>{{post.author}}</a></div>
-      <div class="col s3 center-align">{{post.city.get_city_name_display}}</div>  
-      <div class="col s5">Date Created: {{post.created_at}}  </br> Date Updated : {{post.updated_at}}</div>
+  <div class='row'>
+    <div class='col s12' style='border:2px solid #000; padding:20px 10px 20px 10px;'>
+      <div class='col s4'>{{post.title}}&nbsp;&nbsp; |&nbsp;&nbsp; <a href='{% url 'profile' %}'>{{post.author}}</a></div>
+      <div class='col s3 center-align'>{{post.city.get_city_name_display}}</div>  
+      <div class='col s5'>Date Created: {{post.created_at}}  </br> Date Updated : {{post.updated_at}}</div>
     </div>
   </div>
   
   <!-- begin the history container / content-->   
-  <div class="row">
-    <div class="col s12" style="border:2px solid #000;padding:60px; background-color:#a79f9f;">
-      <div class="col s12 history center-align right" style="width:150px; padding:10px; background-color:#ddd; margin-bottom:20px;"> <a href="#">Edit</a></div>
-      <div class="col s12">{{post.content}}</div>
+  <div class='row'>
+    <div class='col s12' style='border:2px solid #000;padding:60px; background-color:#a79f9f;'>
+      <div class='col s12 history center-align right' style='width:150px; padding:10px; background-color:#ddd; margin-bottom:20px;'> <a href='#'>Edit</a></div>
+      <div class='col s12'>{{post.content}}</div>
     </div>
   </div>
 
