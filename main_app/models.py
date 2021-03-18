@@ -24,6 +24,7 @@ class Post(models.Model):
   city = models.ForeignKey('City', related_name='posts',on_delete=models.CASCADE)
   created_at = models.DateTimeField(auto_now_add=True)
   updated_at = models.DateTimeField(auto_now=True)
+  
 
 class City(models.Model):
   city_name = models.CharField(
@@ -36,3 +37,6 @@ class City(models.Model):
     choices=IMG_URLS,
     default=IMG_URLS[0][0]
     )
+  def __str__(self):
+    return self.get_city_name_display()
+  

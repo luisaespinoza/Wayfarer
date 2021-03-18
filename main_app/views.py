@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from main_app.forms import SignUpForm, EditUserForm
 from django.contrib.auth.decorators import login_required
 # from django.contrib.auth.models import User
-from .models import User
+from .models import User,Post,City
 # Create your views here.
 
 
@@ -26,8 +26,11 @@ def user_login(request):
     login(request, user)
     return redirect('home')
 
-def post_details(request, id):
-  return render(request, "detail.html")
+def post_details(request, post_id):
+  user = get_user_model().objects.get(username=request.user)
+  post = Post.objects.get(id=post_id)
+  context = {'user': user, 'post': post}
+  return render(request, "detail.html", context)
 
 
 def signup(request):
@@ -59,22 +62,6 @@ def profile_edit(request):
   form = SignUpForm()
   context = {'form':form, 'error_message':error_message}
   return render(request, 'index.html', context)
-
-
-
-# def post_edit(request):
-#   error_message =''
-#   if request.method == 'POST':
-#     form = EditUserForm(request.POST, instance=request.user)
-#     if form.is_valid():
-#       user = form.save()
-#       login(request, user)
-#       return redirect('home')
-#   else:
-#     error_message = 'Invalid sign up - try again'
-#   form = SignUpForm()
-#   context = {'form':form, 'error_message':error_message}
-  # return render(request, "post.html" )
   
 
 @login_required

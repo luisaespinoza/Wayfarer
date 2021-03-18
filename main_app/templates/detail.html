@@ -3,32 +3,14 @@
 
 {% block content %}
 
-<style>
-.container .row {
-  margin-top:40px;
-}
-
-.post .card {
-  border:2px solid #777;
-  box-shadow: none;
-  -webkit-box-shadow: none;
-}
-
-{% comment %} .s4 {
-  border:2px solid red;
-} {% endcomment %}
-
-</style>
-
-
 <div class="post">
 
   <!-- author / city / date created container -->
   <div class="row">
-    <div class="col s12" style="border:2px solid #000; padding:20px;">
-      <div class="col s4"><a href="#">Post Title</a>&nbsp;&nbsp; |&nbsp;&nbsp; <a href="#">Author</a></div>
-      <div class="col s4 center-align">San Francisco</div>  
-      <div class="col s4 right-align"><a href="#">Date Created: </a>&nbsp;&nbsp; <a href="#">date</a></div>
+    <div class="col s12" style="border:2px solid #000; padding:20px 10px 20px 10px;">
+      <div class="col s4">{{post.title}}&nbsp;&nbsp; |&nbsp;&nbsp; <a href='{% url 'profile' %}'>{{post.author}}</a></div>
+      <div class="col s3 center-align">{{post.city.get_city_name_display}}</div>  
+      <div class="col s5">Date Created: {{post.created_at}}  </br> Date Updated : {{post.updated_at}}</div>
     </div>
   </div>
   
@@ -36,7 +18,7 @@
   <div class="row">
     <div class="col s12" style="border:2px solid #000;padding:60px; background-color:#a79f9f;">
       <div class="col s12 history center-align right" style="width:150px; padding:10px; background-color:#ddd; margin-bottom:20px;"> <a href="#">Edit</a></div>
-      <div class="col s12">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, odit cum deleniti voluptatibus officiis ratione? Optio quam ipsam reprehenderit, tempore odit harum perferendis dolorum incidunt accusamus, libero obcaecati vitae, alias eligendi nemo culpa! Fugiat, quos? Quidem, eveniet id totam porro rem officiis. Ipsa obcaecati consectetur excepturi cupiditate at, magnam id illo eligendi. Nisi quod impedit dolorum voluptates adipisci accusantium consequatur inventore tempora corrupti. Aliquam, veritatis. Perferendis optio hic accusantium eaque error, consequatur enim nobis facere, unde tempore tenetur ipsum blanditiis omnis eos magnam illo. Aut possimus totam, laborum explicabo ab voluptates molestiae voluptatibus sed excepturi modi non perferendis placeat minus.</div>
+      <div class="col s12">{{post.content}}</div>
     </div>
   </div>
 
