@@ -9,7 +9,9 @@
       <!-- user and city content-->
       <div class='card'>
         <div class='card-content'>
-          <a href='#'>WildChild</a>&nbsp;&nbsp; |&nbsp;&nbsp; <a href='#'>San Francisco</a>
+          {{user.username}}&nbsp;&nbsp; |&nbsp;&nbsp; {{user.city}}
+          </br>
+          Member Since: {{user.date_joined}}
         </div>
       </div>
     </div>
@@ -28,10 +30,13 @@
       <div class='history'>
         History
       </div>
-      <div class='recent-post' style='border:2px solid #000; margin-top:20px; padding:20px; '>Most recent Lorem ipsum, dolor sit amet consectetur adipisicing elit. Pariatur repudiandae, nihil cupiditate consequatur debitis explicabo voluptas tempora incidunt fugit optio!</div>
-      <div class='recent-post' style='border:2px solid #000; margin-top:20px; padding:20px; '>Most recent Lorem ipsum, dolor sit amet consectetur adipisicing elit. Pariatur repudiandae, nihil cupiditate consequatur debitis explicabo voluptas tempora incidunt fugit optio!</div>
-      <div class='recent-post' style='border:2px solid #000; margin-top:20px; padding:20px; '>Most recent Lorem ipsum, dolor sit amet consectetur adipisicing elit. Pariatur repudiandae, nihil cupiditate consequatur debitis explicabo voluptas tempora incidunt fugit optio!</div>
-    </div>  
+      {% for post in user.posts.all  %}
+      <a href="{% url 'post_details' post.id %}">
+      <div class='recent-post' style='border:2px solid #000; margin-top:20px; padding:20px; '>{{post.title}} | {{post.created_at}}</div>
+      </a>
+      
+      {% endfor %}
+      </div>  
   </div>
 </div>
 
