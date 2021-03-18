@@ -61,26 +61,11 @@ def profile_edit(request):
 def profile(request):
   print(request)
   user = get_user_model().objects.get(username=request.user)
-  user_fields= ['username','email','first_name','last_name', 'city']
-  # for field in user_fields:
-  form = EditUserForm(initial={'city': user.city, 'email':user.email, 'first_name': user.first_name, 'last_name':user.last_name,'city':user.city , 'username':user.username})
+  user_fields= {'city': user.city, 'email':user.email, 'first_name': user.first_name, 'last_name':user.last_name,'city':user.city , 'username':user.username}
+  form = EditUserForm(initial=user_fields)
   context = {'form': form, 'user': user}
   return render(request, 'accounts/profile.html', context)
 
-
-#  @login_required
-# def user_edit(request, user_id):
-#   # get a reference to a user
-#   user = user.objects.get(id=user_id)
-#   # build a form for the user filling it with values from the instance or values from the POST request
-#   user_form = userForm(request.POST or None, instance=user)
-#   if request.POST and user_form.is_valid():
-#     # save changes to the user
-#     user_form.save()
-#     # redirect to the detail page
-#     return redirect('detail', user_id=user_id)
-#   else:
-#     return render(request, 'users/edit.html', { 'user': user, 'user_form': user_form }) 
 
 
 

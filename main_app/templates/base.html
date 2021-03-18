@@ -20,7 +20,6 @@
         <ul class='right'>
           <li><a href='/about'>About</a></li>
           {% if user.is_authenticated %}
-            {% comment %} <li><a href='{% url 'index' %}'>Index</a></li> {% endcomment %}
             <li><a href='{% url 'logout' %}'>Log Out</a></li>
           {% else %}
             <li>{% include 'registration/signup.html' %}</li>

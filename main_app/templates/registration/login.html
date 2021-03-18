@@ -4,7 +4,6 @@
   <div id='modal2' class='modal'>
     <div class='modal-content'>
 
-
       <form method='post' action='{% url 'login' %}'>
         {% csrf_token %}
         {{ login_form.as_p }}
