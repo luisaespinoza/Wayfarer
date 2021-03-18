@@ -26,6 +26,9 @@ def user_login(request):
     login(request, user)
     return redirect('home')
 
+def post_details(request, id):
+  return render(request, "detail.html")
+
 
 def signup(request):
   error_message = ''
@@ -56,6 +59,23 @@ def profile_edit(request):
   form = SignUpForm()
   context = {'form':form, 'error_message':error_message}
   return render(request, 'index.html', context)
+
+
+
+# def post_edit(request):
+#   error_message =''
+#   if request.method == 'POST':
+#     form = EditUserForm(request.POST, instance=request.user)
+#     if form.is_valid():
+#       user = form.save()
+#       login(request, user)
+#       return redirect('home')
+#   else:
+#     error_message = 'Invalid sign up - try again'
+#   form = SignUpForm()
+#   context = {'form':form, 'error_message':error_message}
+  # return render(request, "post.html" )
+  
 
 @login_required
 def profile(request):
