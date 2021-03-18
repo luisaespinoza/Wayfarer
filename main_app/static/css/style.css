@@ -20,3 +20,22 @@ body {
   border:2px solid #777;
   box-shadow: none;
   -webkit-box-shadow: none;
+}
+
+a.recent-post {
+  border:2px solid #000;
+}
+
+.recent-post:hover {
+  box-shadow: 10px 10px grey;
+}
+
+.post-link:hover {
+  box-shadow: 10px 10px grey;
+  text-decoration: underline;
+}
+
+a:visited { 
+  color:black !important;
+  text-decoration !important;
+}

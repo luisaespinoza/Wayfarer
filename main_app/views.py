@@ -32,6 +32,9 @@ def post_details(request, post_id):
   context = {'user': user, 'post': post}
   return render(request, "detail.html", context)
 
+def cities(request):
+  return render(request, "cities.html")
+
 
 def signup(request):
   error_message = ''
@@ -72,8 +75,6 @@ def profile(request):
   form = EditUserForm(initial=user_fields)
   context = {'form': form, 'user': user}
   return render(request, 'accounts/profile.html', context)
-
-
 
 
 
