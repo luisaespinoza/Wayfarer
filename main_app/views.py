@@ -19,17 +19,17 @@ def home(request):
 
 def user_login(request):
   error_message = ''
-  if request.method == 'POST':
+  if request.method == 'POST' :
     user = AuthenticationForm(request.POST)
     user = SignUpForm(request.POST)
     print(user)
-    login(request,user)
+    login(request, user)
     return redirect('home')
 
 
 def signup(request):
-  error_message =''
-  if request.method == 'POST':
+  error_message = ''
+  if request.method == 'POST' :
     form = SignUpForm(request.POST)
     if form.is_valid():
       user = form.save()
@@ -46,7 +46,7 @@ def signup(request):
 def profile_edit(request):
   error_message =''
   if request.method == 'POST':
-    form = EditUserForm(request.POST,instance=request.user)
+    form = EditUserForm(request.POST, instance=request.user)
     if form.is_valid():
       user = form.save()
       login(request, user)

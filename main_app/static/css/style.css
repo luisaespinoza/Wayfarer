@@ -1,0 +1,14 @@
+
+body {
+
+}
+
+.profile {
+  margin-top:40px;
+}
+
+.profile .card {
+  border:2px solid #777;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+}
