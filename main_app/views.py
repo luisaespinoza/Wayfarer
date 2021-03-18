@@ -11,7 +11,7 @@ def home(request):
   sign_up_form =SignUpForm()
 
   login_form = AuthenticationForm
-  return render(request, "index.html", {'sign_up_form' :sign_up_form, 'login_form': login_form()})
+  return render(request, 'index.html', {'sign_up_form' :sign_up_form, 'login_form': login_form()})
 
 def user_login(request):
   error_message = ''
@@ -61,7 +61,7 @@ def profile(request):
   user_fields= ['username','email','first_name','last_name', 'city']
   # for field in user_fields:
   form = EditUserForm(initial={'city': user.city, 'email':user.email, 'first_name': user.first_name, 'last_name':user.last_name,'city':user.city , 'username':user.username})
-  return render(request, "accounts/profile.html", { "form": form, 'user': user })
+  return render(request, 'accounts/profile.html', { 'form': form, 'user': user })
 
 
 #  @login_required
