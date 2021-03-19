@@ -29,7 +29,10 @@ def user_login(request):
 def post_details(request, post_id):
   user = get_user_model().objects.get(username=request.user)
   post = Post.objects.get(id=post_id)
-  context = {'user': user, 'post': post}
+  post_fields = {'title':post.title, 'content': post.content, 'city': post.city}
+  edit_post_form = EditPostForm(initial=post_fields)
+  edit_post_form.fields['city'].widget.attrs['disabled'] = True
+  context = {'user': user, 'post': post, 'edit_post_form': edit_post_form}
   return render(request, 'detail.html', context)
 
 @login_required
@@ -51,15 +54,24 @@ def edit_post(request, post_id):
   if request.method == 'POST' :
     post = Post.objects.get(id=post_id)
     edit_post = EditPostForm(request.POST, instance=post)
+    edit_post.city= post.city
     if edit_post.is_valid():
       edit_post.save()
       return redirect('detail.html')
   else:
     error_message= 'invalid post - try again'
-  return render(request,'cities.html')
+  return redirect('cities')
 
 def delete_post(request, post_id):
-  pass
+  post_to_delete=Post.objects.get(id=post_id)
+  post_to_delete.delete()
+  return redirect('cities')
+
+def cities(request):
+  new_post_form= NewPostForm()
+  context = {'new_post_form': new_post_form}
+  return render(request, "cities.html", context)
+
 
 def signup(request):
   error_message = ''
@@ -100,8 +112,6 @@ def profile(request):
   form = EditUserForm(initial=user_fields)
   context = {'form': form, 'user': user}
   return render(request, 'accounts/profile.html', context)
-
-
 
 
 
