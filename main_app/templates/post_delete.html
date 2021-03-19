@@ -2,8 +2,7 @@
   <div id='modal-delete-post' class='modal'>
     <div class='modal-content'>
       <form id='id_delete-post-confirm' method='post' action='{% url 'delete_post' post.id %}' >
-      <div class="dialog title">Confirmation</div>
-      <div class="dialog content">Are you sure you want to delete {{post.title}}?</div>
+        <div class="dialog content">Are you sure you want to delete {{post.title}}?</div>
         {% csrf_token %}
         <input type='submit' class='btn red' value='delete'>
         <input type='hidden' name='next' value='{{ next }}'>
