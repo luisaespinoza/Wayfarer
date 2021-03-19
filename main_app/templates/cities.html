@@ -7,12 +7,12 @@
     <div class='row'>
     <div class='col s4' style='padding:10px;'>
       <h4>Cities</h4>
-      <div>
+      <div class="cities-sidebar">
         {% for city in cities %}
         <a href='{% url 'cities_details' city.id %}'>
         <div class='card'>
         <div class='card-title'>{{city.get_city_name_display}}</div>
-        <div class='card-image'><img src='{{city.get_city_photo_url_display}}' alt=''></div>
+        <div class='card-image'><img class='cities-sidebar-thumb' src='{{city.get_city_photo_url_display}}' alt=''></div>
         <div class='card-content'>{{city.posts.count}} posts.</div>
         </div>
         </a>
@@ -39,24 +39,25 @@
         </div>
 
 
-        <div class='row' style='margin-top:0; margin-bottom:0;'>
+          {% for post in city.posts.all  %}
+          <div class='row' style='margin-top:0; margin-bottom:0;'>
           <div class='col s2'>
-            <h6>{{request.user.get_name_display}}</h6>
-            <h6>{{city.get_city_name_display}}</h6>
+            <h6> author: {{post.author}}</h6>
           </div>
           <div class='col s10'>
-          {% for post in city.posts.all  %}
-          <div class='card'>
-          <div class='card-title'>
-            <h5 style='margin-top:5px;'>{{post.title}}</h5>
-          </div>
-          <div class='card-content'>
-            <p style='text-overflow: ellipsis;'>{{post.content}}</p>
-          </div>
-          </div>
-          {% endfor %}
+          <a href="{% url 'post_details' post.id %}">
+            <div class='card cities-post-preview'>
+              <div class='card-title'>
+                <h5 style='margin-top:5px;'>{{post.title}}</h5>
+              </div>
+              <div class='card-content'>
+                <p style='text-overflow: ellipsis;'>{{post.content}}</p>
+              </div>
+            </div>
+          </a>
           </div>
         </div>
+          {% endfor %}
 
 
       </div>
