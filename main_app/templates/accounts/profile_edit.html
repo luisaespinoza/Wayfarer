@@ -1,15 +1,13 @@
+  <a class='waves-effect waves-light btn modal-trigger' data-target='modal3'>Edit Profile</a>
 
-
-  <a class='waves-effect waves-light btn modal-trigger' data-target='modal1'>Sign Up</a>
-
-  <div id='modal1' class='modal'>
+  <div id='modal3' class='modal'>
     <div class='modal-content'>
 
 
-      <form id='id_signup' method='post' action='{% url 'signup' %}'>
+      <form id='id_signup' method='post' action='{% url 'profile_edit' %}'>
         {% csrf_token %}
-        {{ sign_up_form.as_p }}
-        <input type='submit' class='btn' value='sign up'>
+        {{ form.as_p }}
+        <input type='submit' class='btn' value='Save'>
         <input type='hidden' name='next' value='{{ next }}'>
       </form>
 
@@ -23,5 +21,4 @@
   <script>
     var elems = document.querySelectorAll('.modal');
     var instances = M.Modal.init(elems, {});
-
   </script>

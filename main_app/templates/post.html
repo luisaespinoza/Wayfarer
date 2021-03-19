@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+<div class='profile'>
+  <div class='row'>
+    <div class='col s6'>
+      <!-- user and city content-->
+      <div class='card'>
+        <div class='card-content'>
+          <a href='#'>WildChild</a>&nbsp;&nbsp; |&nbsp;&nbsp; <a href='#'>San Francisco</a>
+        </div>
+      </div>
+    </div>
+    <div class='col s6'>
+    <!-- edit profile link-->
+      <div class='card'>
+        <div class='card-content right-align'>
+          <a href='#'>Edit Profile</a>
+          {% comment %} <li>{% include 'accounts/profile_edit.html' %}</li> {% endcomment %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- begin the history container / content-->
+  <div class='row'>
+    <div class='col s12' style='border:2px solid #000;padding:60px;'>
+      <div class='history'>
+        History
+      </div>
+      <div class='recent-post' style='border:2px solid #000; margin-top:20px; padding:20px; '>Most recent Lorem ipsum, dolor sit amet consectetur adipisicing elit. Pariatur repudiandae, nihil cupiditate consequatur debitis explicabo voluptas tempora incidunt fugit optio!</div>
+      <div class='recent-post' style='border:2px solid #000; margin-top:20px; padding:20px; '>Most recent Lorem ipsum, dolor sit amet consectetur adipisicing elit. Pariatur repudiandae, nihil cupiditate consequatur debitis explicabo voluptas tempora incidunt fugit optio!</div>
+      <div class='recent-post' style='border:2px solid #000; margin-top:20px; padding:20px; '>Most recent Lorem ipsum, dolor sit amet consectetur adipisicing elit. Pariatur repudiandae, nihil cupiditate consequatur debitis explicabo voluptas tempora incidunt fugit optio!</div>
+    </div>  
+  </div>
+</div>
+
+{% endblock  %}
