@@ -42,7 +42,7 @@ def new_post(request):
     new_post = NewPostForm(request.POST)
     if new_post.is_valid():
       new_post.save()
-      return redirect('detail.html')
+      return redirect('cities')
   else: 
     error_message = 'Invalid post - try again'
   new_post_form = NewPostForm()
@@ -67,10 +67,18 @@ def delete_post(request, post_id):
   post_to_delete.delete()
   return redirect('cities')
 
+
+def cities_details(request, city_id):
+  cities = City.objects.all()
+  city = City.objects.get(id=city_id)
+  new_post_form= NewPostForm(initial={'city':city})
+  new_post_form.fields['city'].widget.attrs['disabled'] = True
+  context = {'new_post_form': new_post_form, 'cities':cities, 'city':city}
+  return render(request, 'cities.html', context)
+
 def cities(request):
-  new_post_form= NewPostForm()
-  context = {'new_post_form': new_post_form}
-  return render(request, "cities.html", context)
+  city_id=1
+  return redirect(f'/cities/{city_id}')
 
 
 def signup(request):
