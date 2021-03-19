@@ -25,6 +25,8 @@ def user_login(request):
     print(user)
     login(request, user)
     return redirect('home')
+  else:
+    return redirect('home')
 
 def post_details(request, post_id):
   user = get_user_model().objects.get(username=request.user)
@@ -41,12 +43,16 @@ def new_post(request):
   if request.method == 'POST' :
     new_post = NewPostForm(request.POST)
     if new_post.is_valid():
-      new_post.save()
+      city= new_post.cleaned_data.get('city')
+      content = new_post.cleaned_data.get('content')
+      title = new_post.cleaned_data.get('title')
+      author = request.user
+      create_post =  Post.objects.create(title=title, content=content, city=city, author=author)
+      create_post.save()
       return redirect('cities')
   else: 
-    error_message = 'Invalid post - try again'
-  new_post_form = NewPostForm()
-  return render(request,'cities.html',{'new_post_form': new_post_form})
+    error_message = 'Invalid post ------------ try again'
+  return redirect('cities')
 
 @login_required
 def edit_post(request, post_id):
