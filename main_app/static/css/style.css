@@ -43,3 +43,25 @@ a:visited {
   color:black !important;
   text-decoration !important;
 }
+
+.card .card-image img.cities-sidebar-thumb  {
+  width:150px;
+  height:100px;
+}
+
+.cities-post-preview {
+  padding:10px 0 10px 15px;
+}
+
+.cities-sidebar .card .card-content {
+  padding-left:5px;
+  padding-top:10px;
+}
+
+.cities-post-preview .card-content {
+  padding-left:0;
+}
+
+.cities-sidebar .card {
+  padding: 5px 0 0 15px;
+}
