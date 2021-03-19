@@ -1,8 +1,8 @@
 from django.shortcuts import render ,redirect
 from django.contrib.auth import login, get_user_model
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
-from main_app.forms import SignUpForm, EditUserForm
 from django.contrib.auth.decorators import login_required
+from main_app.forms import SignUpForm, EditUserForm, NewPostForm, EditPostForm
 # from django.contrib.auth.models import User
 from .models import User,Post,City
 # Create your views here.
@@ -29,11 +29,56 @@ def user_login(request):
 def post_details(request, post_id):
   user = get_user_model().objects.get(username=request.user)
   post = Post.objects.get(id=post_id)
-  context = {'user': user, 'post': post}
-  return render(request, "detail.html", context)
+  post_fields = {'title':post.title, 'content': post.content, 'city': post.city}
+  edit_post_form = EditPostForm(initial=post_fields)
+  edit_post_form.fields['city'].widget.attrs['disabled'] = True
+  context = {'user': user, 'post': post, 'edit_post_form': edit_post_form}
+  return render(request, 'detail.html', context)
+
+@login_required
+def new_post(request):
+  error_message = ''
+  if request.method == 'POST' :
+    new_post = NewPostForm(request.POST)
+    if new_post.is_valid():
+      new_post.save()
+      return redirect('cities')
+  else: 
+    error_message = 'Invalid post - try again'
+  new_post_form = NewPostForm()
+  return render(request,'cities.html',{'new_post_form': new_post_form})
+
+@login_required
+def edit_post(request, post_id):
+  error_message: ''
+  if request.method == 'POST' :
+    post = Post.objects.get(id=post_id)
+    edit_post = EditPostForm(request.POST, instance=post)
+    edit_post.city= post.city
+    if edit_post.is_valid():
+      edit_post.save()
+      return redirect('detail.html')
+  else:
+    error_message= 'invalid post - try again'
+  return redirect('cities')
+
+def delete_post(request, post_id):
+  post_to_delete=Post.objects.get(id=post_id)
+  post_to_delete.delete()
+  return redirect('cities')
+
+
+def cities_details(request, city_id):
+  cities = City.objects.all()
+  city = City.objects.get(id=city_id)
+  new_post_form= NewPostForm(initial={'city':city})
+  new_post_form.fields['city'].widget.attrs['disabled'] = True
+  context = {'new_post_form': new_post_form, 'cities':cities, 'city':city}
+  return render(request, 'cities.html', context)
 
 def cities(request):
-  return render(request, "cities.html")
+  city_id=1
+  return redirect(f'/cities/{city_id}')
 
 
 def signup(request):

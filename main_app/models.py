@@ -8,8 +8,8 @@ CITIES = (
   ('GBR', 'Gibraltar')
 )
 IMG_URLS = (
-  ('SF_','San Francisco image URL here.'),
-  ('LND', 'London image URL here.'),
+  ('SF_','https://apexassembly.com/wp-content/uploads/2019/03/San-Francisco-Golden-Gate-Bridge.jpg'),
+  ('LND', 'https://imageproxy.themaven.net//https%3A%2F%2Fwww.history.com%2F.image%2FMTYyNDg1MjE3MTI1Mjc5Mzk4%2Ftopic-london-gettyimages-760251843-promo.jpg'),
   ('GBR', 'Gibralter image URL here.')
 )
 
@@ -37,6 +37,11 @@ class City(models.Model):
     choices=IMG_URLS,
     default=IMG_URLS[0][0]
     )
+  def save(self, *args, **kwargs):
+    for i,a in enumerate(IMG_URLS):
+      if self.city_name in a:
+        self.description = a[1]
+    super(City,self).save(*args, **kwargs)
   def __str__(self):
     return self.get_city_name_display()
   

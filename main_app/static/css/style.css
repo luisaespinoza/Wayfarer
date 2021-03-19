@@ -16,6 +16,10 @@ body {
   margin-top:40px;
 }
 
+.col {
+  border:2px solid red;
+}
+
 .post .card {
   border:2px solid #777;
   box-shadow: none;

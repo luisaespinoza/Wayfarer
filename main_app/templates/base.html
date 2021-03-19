@@ -7,6 +7,7 @@
   <meta http-equiv='X-UA-Compatible' content='ie=edge'>
   <title>Wayfarer</title>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css'>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel='stylesheet' type='text/css' href='{% static 'css/style.css/' %}'>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js'></script>
 </head>
@@ -19,7 +20,9 @@
         </ul>
         <ul class='right'>
           <li><a href='/about'>About</a></li>
+          <li><a href='{% url 'cities' %}'>Cities</a></li>
           {% if user.is_authenticated %}
+            <li><a href='{% url 'profile' %}'>Profile</a></li>
             <li><a href='{% url 'logout' %}'>Log Out</a></li>
           {% else %}
             <li>{% include 'registration/signup.html' %}</li>

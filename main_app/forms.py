@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-from .models import User
+from .models import User, Post, City
 
 class SignUpForm(UserCreationForm):
     email=forms.EmailField(max_length=64)
@@ -17,3 +17,13 @@ class EditUserForm(forms.ModelForm):
     class Meta(UserChangeForm.Meta):
       model = User
       fields = ('email','username','first_name','last_name','city')
+
+class NewPostForm(forms.ModelForm):
+  class Meta():
+    model = Post
+    fields = ('title','content','city')
+  
+class EditPostForm(forms.ModelForm):
+  class Meta():
+    model = Post
+    fields = ('title','content','city')
