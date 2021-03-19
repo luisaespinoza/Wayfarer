@@ -31,8 +31,11 @@
         History
       </div>
       {% for post in user.posts.all  %}
-      <a href="{% url 'post_details' post.id %}">
-      <div class='recent-post' style='border:2px solid #000; margin-top:20px; padding:20px; '>{{post.title}} | {{post.created_at}}</div>
+      <a class="post-link" href="{% url 'post_details' post.id %}">
+      <div class='recent-post' style='border:2px solid #000; margin-top:20px; padding:20px;'>
+        <strong style="font-size:22px;">{{post.title}}</strong><br>
+        {{post.created_at}}
+      </div>
       </a>
       
       {% endfor %}
