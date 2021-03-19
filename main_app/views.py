@@ -1,8 +1,8 @@
 from django.shortcuts import render ,redirect
 from django.contrib.auth import login, get_user_model
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
-from main_app.forms import SignUpForm, EditUserForm
 from django.contrib.auth.decorators import login_required
+from main_app.forms import SignUpForm, EditUserForm, NewPostForm, EditPostForm
 # from django.contrib.auth.models import User
 from .models import User,Post,City
 # Create your views here.
@@ -30,8 +30,36 @@ def post_details(request, post_id):
   user = get_user_model().objects.get(username=request.user)
   post = Post.objects.get(id=post_id)
   context = {'user': user, 'post': post}
-  return render(request, "detail.html", context)
+  return render(request, 'detail.html', context)
 
+@login_required
+def new_post(request):
+  error_message = ''
+  if request.method == 'POST' :
+    new_post = NewPostForm(request.POST)
+    if new_post.is_valid():
+      new_post.save()
+      return redirect('detail.html')
+  else: 
+    error_message = 'Invalid post - try again'
+  new_post_form = NewPostForm()
+  return render(request,'cities.html',{'new_post_form': new_post_form})
+
+@login_required
+def edit_post(request, post_id):
+  error_message: ''
+  if request.method == 'POST' :
+    post = Post.objects.get(id=post_id)
+    edit_post = EditPostForm(request.POST, instance=post)
+    if edit_post.is_valid():
+      edit_post.save()
+      return redirect('detail.html')
+  else:
+    error_message= 'invalid post - try again'
+  return render(request,'cities.html')
+
+def delete_post(request, post_id):
+  pass
 
 def signup(request):
   error_message = ''

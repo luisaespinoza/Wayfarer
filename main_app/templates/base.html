@@ -20,6 +20,9 @@
         <ul class='right'>
           <li><a href='/about'>About</a></li>
           {% if user.is_authenticated %}
+            {% if 'profile' in request.get_full_path %}
+            {% comment %} <li><a href='{% url 'profile' %}'>Profile</a></li> {% endcomment %}
+            {% endif %}
             <li><a href='{% url 'logout' %}'>Log Out</a></li>
           {% else %}
             <li>{% include 'registration/signup.html' %}</li>

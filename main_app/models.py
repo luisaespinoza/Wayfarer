@@ -37,6 +37,11 @@ class City(models.Model):
     choices=IMG_URLS,
     default=IMG_URLS[0][0]
     )
+  def save():
+    for i,a in enumerate(IMG_URLS):
+      if self.name in a:
+        self.description = a[1]
+    super(City,self).save(*args, **kwargs)
   def __str__(self):
     return self.get_city_name_display()
   
