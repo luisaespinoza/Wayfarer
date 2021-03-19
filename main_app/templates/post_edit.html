@@ -1,1 +1,28 @@
-Hi
+
+  <a class='waves-effect waves-light btn modal-trigger' data-target='modal-edit-post'>Edit Post</a>
+
+  <div id='modal-edit-post' class='modal'>
+    <div class='modal-content'>
+
+
+      <form id='id_newpost' method='post' action='{% url 'edit_post' post.id %}'>
+        {% csrf_token %}
+        {{ edit_post_form.as_p }}
+        <input type='submit' class='btn' value='edit post'>
+        <input type='hidden' name='next' value='{{ next }}'>
+      </form>
+
+
+    </div>
+    <div class='modal-footer'>
+      <a href='#!' class='modal-close waves-effect waves-green btn-flat'></a>
+    </div>
+  </div>
+
+  <script>
+    var elems = document.querySelectorAll('.modal');
+    var instances = M.Modal.init(elems, {});
+    const selectEl = document.querySelector('#id_city');
+    M.FormSelect.init(selectEl);
+
+  </script>
