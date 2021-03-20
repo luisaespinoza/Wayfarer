@@ -128,19 +128,19 @@ div.container img {
 .btn, .btn-floating, .btn-large{
   background-color: #607d8b;
 }
-.btn:visited, .btn-floating, .btn-large{
+.btn:visited, .btn-floating:visited, .btn-large:visited{
   background-color: #c6ff00;
   color:#263238;
 }
-.btn:hover, .btn-floating, .btn-large {
+.btn:hover, .btn-floating:hover, .btn-large:hover, .btn-floating.btn-large i:hover, .btn-floating i:hover {
   background-color: #c6ff00;
   color:#263238;
 }
-.btn:active, .btn-floating, .btn-large{
+.btn:active, .btn-floating:active, .btn-large:active{
   background-color:#c6ff00;
   color:#263238;
 }
-.btn:focus, .btn-floating, .btn-large{
+.btn:focus, .btn-floating:focus, .btn-large:focus{
   background-color: #c6ff00;
   color:#263238;
 }
