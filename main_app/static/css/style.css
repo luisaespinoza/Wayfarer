@@ -1,7 +1,14 @@
+/* dev borders */
+/* .col {
+  border:2px solid red;
+} */
+/* dev borders */
 
-body {
 
+.nav {
+  
 }
+
 
 .profile {
   margin-top:40px;
@@ -16,22 +23,26 @@ body {
   margin-top:40px;
 }
 
-.col {
-  border:2px solid red;
-}
-
 .post .card {
   border:2px solid #777;
   box-shadow: none;
   -webkit-box-shadow: none;
 }
 
+a.brand-logo, nav ul a {
+  color:#c6ff00;
+}
+
+nav ul a {
+  font-weight:bold;
+}
+
 a.recent-post {
   border:2px solid #000;
 }
 
-.recent-post:hover {
-  box-shadow: 10px 10px grey;
+.hoverable:hover {
+  box-shadow: 10px 10px #26a69a;
 }
 
 .post-link:hover {
@@ -39,9 +50,17 @@ a.recent-post {
   text-decoration: underline;
 }
 
-a:visited { 
-  color:black !important;
-  text-decoration !important;
+
+
+
+/* Cities page styles */
+
+div.container h4, .cities-sidebar h4 {
+  margin-top:0;
+}
+
+div.container > .row:first-of-type {
+  margin-top:0;
 }
 
 .card .card-image img.cities-sidebar-thumb  {
@@ -64,4 +83,9 @@ a:visited {
 
 .cities-sidebar .card {
   padding: 5px 0 0 15px;
+}
+
+
+.cities-posts-header {
+  display:inline-block;
 }

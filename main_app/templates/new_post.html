@@ -1,10 +1,10 @@
 
-  <a class='waves-effect waves-light red btn btn-floating btn-large modal-trigger' data-target='modal-new-post'><i class="material-icons">add</i></a>
+  <a class='waves-effect waves-light red btn btn-floating btn-large modal-trigger right' data-target='modal-new-post'><i class="material-icons">add</i></a>
   <div id='modal-new-post' class='modal'>
     <div class='modal-content'>
 
 
-      <form id='id_newpost' method='post' action='{% url 'new_post' %}'>
+      <form id='id_newpost' method='post' action="{% url 'new_post' %}">
         {% csrf_token %}
         {{ new_post_form.as_p }}
         <input type='submit' class='btn' value='new post'>
