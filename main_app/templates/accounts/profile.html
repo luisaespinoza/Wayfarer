@@ -5,16 +5,10 @@
 
 <div class='profile'>
   <div class='row'>
-    <div class='col s6'>
-      <div class='card recent-post'>
-        <div class='card-content'>
-          {{user.username}}&nbsp;&nbsp; |&nbsp;&nbsp; {{user.city}}
-          </br>
-          Member Since: {{user.date_joined}}
-        </div>
-      </div>
+    <div class='col s10'>
+      {% include 'accounts/user_card.html' %}
     </div>
-    <div class='col s6'>
+    <div class='col s2'>
       <div class='card profile-edit-card'>
         <div class='card-content right-align'>
           <div>{% include 'accounts/profile_edit.html' %}</div>
