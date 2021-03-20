@@ -28,12 +28,7 @@
         <h4>History</h4>
       </div>
       {% for post in user.posts.all reversed %}
-        <a class="post-link" href="{% url 'post_details' post.id %}">
-          <div class='recent-post'>
-            <i class="material-icons dp48">comment</i>  <strong style="font-size:22px;">{{post.title}}</strong><br>
-            <small>{{post.created_at}}</small>
-          </div>
-        </a>
+      {% include 'posts/post_card.html' with post=post%}
       {% endfor %}
     </div>  
   </div>
