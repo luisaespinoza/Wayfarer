@@ -8,16 +8,7 @@
       <div class="cities-sidebar">
         <h4>Cities</h4>
         {% for city in cities %}
-        <a href='{% url 'cities_details' city.id %}'>
-        <div class='card'>
-        <div class='card-image' style="display:inline-block"><img class='cities-sidebar-thumb' src='{{city.get_city_photo_url_display}}' alt=''></div>
-        <div class='card-title valign-wrapper' style="display:inline-block">
-          <h4>{{city.get_city_name_display}}</h4>
-          </div>
-        <div style="clear:both"></div>
-        <div class='card-content'>{{city.posts.count}} posts</div>
-        </div>
-        </a>
+        {% include 'cities/city_card.html' with city=city %}
         {% endfor %}
       </div>
     </div>
@@ -47,19 +38,9 @@
           {% for post in city.posts.all reversed %}
           <div class='row' style='margin-top:0; margin-bottom:0;'>
           <div class='col s2'>
-            <h6> author: {{post.author}}</h6>
           </div>
           <div class='col s10'>
-          <a href="{% url 'post_details' post.id %}">
-            <div class='card cities-post-preview'>
-              <div class='card-title'>
-                <h5 style='margin-top:5px;'>{{post.title}} | {{post.created_at}}</h5>
-              </div>
-              <div class='card-content'>
-                <p style='text-overflow: ellipsis;'>{{post.content}}</p>
-              </div>
-            </div>
-          </a>
+          {% include 'posts/post_card.html' with post=post %}
           </div>
         </div>
           {% endfor %}
