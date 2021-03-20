@@ -30,9 +30,9 @@ def post_details(request, post_id):
   post_belongs_to_user = post.author.id == request.user.id 
   post_fields = {'title':post.title, 'content': post.content, 'city': post.city}
   edit_post_form = EditPostForm(initial=post_fields)
-  edit_post_form.fields['city'].widget.attrs['disabled'] = True
+  # edit_post_form.fields['city'].widget.attrs['disabled'] = True
   context = {'post': post, 'edit_post_form': edit_post_form ,"post_belongs_to_user": post_belongs_to_user}
-  return render(request, 'detail.html', context)
+  return render(request, 'posts/details.html', context)
 
 @login_required
 def new_post(request):
@@ -63,7 +63,8 @@ def edit_post(request, post_id):
     edit_post.city= post.city
     if edit_post.is_valid():
       edit_post.save()
-      return redirect('detail.html')
+      # return redirect(f'posts/details/{post_id}')
+      return redirect(f'/posts/{post_id}/details')
   else:
     error_message= 'invalid post - try again'
   return redirect('cities')
@@ -79,7 +80,7 @@ def cities_details(request, city_id):
   city = City.objects.get(id=city_id)
   new_post_form= NewPostForm(initial={'city':city})
   context = {'new_post_form': new_post_form, 'cities':cities, 'city':city}
-  return render(request, 'cities.html', context)
+  return render(request, 'cities/index.html', context)
 
 def cities(request):
   city_id=1
