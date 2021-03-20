@@ -6,7 +6,6 @@
 <div class='profile'>
   <div class='row'>
     <div class='col s6'>
-      <!-- user and city content-->
       <div class='card recent-post'>
         <div class='card-content'>
           {{user.username}}&nbsp;&nbsp; |&nbsp;&nbsp; {{user.city}}
@@ -16,7 +15,6 @@
       </div>
     </div>
     <div class='col s6'>
-    <!-- edit profile link-->
       <div class='card profile-edit-card'>
         <div class='card-content right-align'>
           <div>{% include 'accounts/profile_edit.html' %}</div>
@@ -24,22 +22,20 @@
       </div>
     </div>
   </div>
-  <!-- begin the history container / content-->
   <div class='row'>
     <div class='col s12'>
       <div class='history'>
         <h4>History</h4>
       </div>
       {% for post in user.posts.all reversed %}
-      <a class="post-link" href="{% url 'post_details' post.id %}">
-      <div class='recent-post'>
-        <i class="material-icons dp48">comment</i>  <strong style="font-size:22px;">{{post.title}}</strong><br>
-        {{post.created_at}}
-      </div>
-      </a>
-      
+        <a class="post-link" href="{% url 'post_details' post.id %}">
+          <div class='recent-post'>
+            <i class="material-icons dp48">comment</i>  <strong style="font-size:22px;">{{post.title}}</strong><br>
+            <small>{{post.created_at}}</small>
+          </div>
+        </a>
       {% endfor %}
-      </div>  
+    </div>  
   </div>
 </div>
 
