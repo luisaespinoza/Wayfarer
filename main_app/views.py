@@ -12,10 +12,7 @@ User = get_user_model()
 
 
 def home(request):
-  sign_up_form =SignUpForm()
-  login_form = AuthenticationForm
-  context = {'sign_up_form' :sign_up_form, 'login_form': login_form()}
-  return render(request, 'index.html', context)
+  return render(request, 'index.html')
 
 def user_login(request):
   error_message = ''
