@@ -35,11 +35,13 @@
 
         <div class='row'>
           <h5>Posts</h5>
+          {% if user.is_authenticated %}
           {% include 'new_post.html' %}
+          {% endif %}
         </div>
 
 
-          {% for post in city.posts.all  %}
+          {% for post in city.posts.all reversed %}
           <div class='row' style='margin-top:0; margin-bottom:0;'>
           <div class='col s2'>
             <h6> author: {{post.author}}</h6>
@@ -48,7 +50,7 @@
           <a href="{% url 'post_details' post.id %}">
             <div class='card cities-post-preview'>
               <div class='card-title'>
-                <h5 style='margin-top:5px;'>{{post.title}}</h5>
+                <h5 style='margin-top:5px;'>{{post.title}} | {{post.created_at}}</h5>
               </div>
               <div class='card-content'>
                 <p style='text-overflow: ellipsis;'>{{post.content}}</p>
