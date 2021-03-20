@@ -30,7 +30,7 @@
       <div class='history'>
         <h4>History</h4>
       </div>
-      {% for post in user.posts.all  %}
+      {% for post in user.posts.all reversed %}
       <a class="post-link" href="{% url 'post_details' post.id %}">
       <div class='recent-post hoverable' style='border:2px solid #000; margin-top:20px; padding:20px;'>
         <strong style="font-size:22px;">{{post.title}}</strong><br>

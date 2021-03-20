@@ -12,10 +12,7 @@ User = get_user_model()
 
 
 def home(request):
-  sign_up_form =SignUpForm()
-  login_form = AuthenticationForm
-  context = {'sign_up_form' :sign_up_form, 'login_form': login_form()}
-  return render(request, 'index.html', context)
+  return render(request, 'index.html')
 
 def user_login(request):
   error_message = ''
@@ -25,14 +22,16 @@ def user_login(request):
     print(user)
     login(request, user)
     return redirect('home')
+  else:
+    return redirect('home')
 
 def post_details(request, post_id):
-  user = get_user_model().objects.get(username=request.user)
   post = Post.objects.get(id=post_id)
+  post_belongs_to_user = post.author.id == request.user.id 
   post_fields = {'title':post.title, 'content': post.content, 'city': post.city}
   edit_post_form = EditPostForm(initial=post_fields)
   edit_post_form.fields['city'].widget.attrs['disabled'] = True
-  context = {'user': user, 'post': post, 'edit_post_form': edit_post_form}
+  context = {'post': post, 'edit_post_form': edit_post_form ,"post_belongs_to_user": post_belongs_to_user}
   return render(request, 'detail.html', context)
 
 @login_required
@@ -40,13 +39,20 @@ def new_post(request):
   error_message = ''
   if request.method == 'POST' :
     new_post = NewPostForm(request.POST)
+    print('Im posting========================================')
     if new_post.is_valid():
-      new_post.save()
+      print('Im valid========================================')
+      city= new_post.cleaned_data.get('city')
+      content = new_post.cleaned_data.get('content')
+      title = new_post.cleaned_data.get('title')
+      author = request.user
+      create_post =  Post.objects.create(title=title, content=content, city=city, author=author)
+      create_post.save()
       return redirect('cities')
+    print(new_post.errors)
   else: 
-    error_message = 'Invalid post - try again'
-  new_post_form = NewPostForm()
-  return render(request,'cities.html',{'new_post_form': new_post_form})
+    error_message = 'Invalid post ------------ try again'
+  return redirect('cities')
 
 @login_required
 def edit_post(request, post_id):
@@ -72,7 +78,6 @@ def cities_details(request, city_id):
   cities = City.objects.all()
   city = City.objects.get(id=city_id)
   new_post_form= NewPostForm(initial={'city':city})
-  new_post_form.fields['city'].widget.attrs['disabled'] = True
   context = {'new_post_form': new_post_form, 'cities':cities, 'city':city}
   return render(request, 'cities.html', context)
 
