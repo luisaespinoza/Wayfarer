@@ -33,7 +33,7 @@
       {% for post in user.posts.all reversed %}
       <a class="post-link" href="{% url 'post_details' post.id %}">
       <div class='recent-post'>
-        <img style="padding-right:10px;" src="https://www.flaticon.com/svg/vstatic/svg/1330/1330233.svg?token=exp=1616209737~hmac=ff5cc4c6bc6b311683f11f3563d35bdc" width="45" height="45" alt=""><strong style="font-size:22px;">{{post.title}}</strong><br>
+        <i class="material-icons dp48">comment</i>  <strong style="font-size:22px;">{{post.title}}</strong><br>
         {{post.created_at}}
       </div>
       </a>
