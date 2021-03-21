@@ -16,6 +16,9 @@ def home(request):
   posts = Post.objects.all()
   context = {'cities': cities, 'posts': posts}
   return render(request, 'index.html', context)
+  
+def about(request):
+  return render(request,'about.html')
 
 def user_login(request):
   error_message = ''

@@ -16,11 +16,15 @@
     </div>
   </div>
   <div class='col s4'>
-    <h2>Wayfarer is...</h2>
     {% comment %} <h2>Topic</h2> {% endcomment %}
-    <div class='card black'>
+    <div class='card blue-grey darken-3'>
+      <div class="card-title">
+      <h2>Wayfarer is...</h2>
+      </div>
       <div class='card-content'>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi quaerat dolor reiciendis deleniti eos ipsum illo illum perferendis voluptas nulla quibusdam sit laborum blanditiis sint earum vel odit pariatur quidem id, vero assumenda expedita autem voluptatibus ut! Quam, porro eaque?
+        a social blog where users can post comments about cities. 
+      </div>
+      <div class="card-footer">
       </div>
     </div>
   </div>
@@ -28,8 +32,8 @@
     <div class='card blue-grey darken-3'>
     <div class="card-title"><h2>Topics</h2></div>
       <div class='card-content'>
-        {% for post in posts  reversed%}
-        {% include 'posts/post_card.html' %}
+        {% for post in posts reversed%}
+          {% include 'posts/post_card.html' %}
         {% endfor %}
       </div>
     </div>
