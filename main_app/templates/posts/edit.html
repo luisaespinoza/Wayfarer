@@ -8,7 +8,7 @@
       <form id='id_newpost' method='post' action='{% url 'edit_post' post.id %}'>
         {% csrf_token %}
         {{ edit_post_form.as_p }}
-        <input type='submit' class='btn' value='edit post'>
+        <input type='submit' class='btn' value='Save'>
         <input type='hidden' name='next' value='{{ next }}'>
       </form>
 
