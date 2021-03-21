@@ -18,6 +18,7 @@ body {
 
 .profile .card {
   background-color:inherit;
+  color: #c6ff00
 }
 
 .profile .card-content, .profile h4 {
@@ -40,6 +41,15 @@ body {
   border-radius:10px;
 }
 
+.developer-card {
+  height: 320px;
+  width:364px;
+  color: #c6ff00
+}
+
+.developer-thumbnail {
+  width: 164px;
+}
 /* styles from misc */
 
 .container .row {

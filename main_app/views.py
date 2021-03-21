@@ -12,7 +12,13 @@ User = get_user_model()
 
 
 def home(request):
-  return render(request, 'index.html')
+  cities =City.objects.all()
+  posts = Post.objects.all()
+  context = {'cities': cities, 'posts': posts}
+  return render(request, 'index.html', context)
+  
+def about(request):
+  return render(request,'about.html')
 
 def user_login(request):
   error_message = ''
