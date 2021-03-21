@@ -1,10 +1,11 @@
 <a href='{% url 'cities_details' city.id %}'>
-        <div class='card wayfarer-card' style="width:100%;">
-        <div class='card-title valign-wrapper' style="display:inline-block">
-          <h4>{{city.get_city_name_display}}</h4>
-          </div>
-        <div class='card-image' style="display:inline-block"><img class='cities-sidebar-thumb' src='{{city.get_city_photo_url_display}}' alt=''></div>
-        <div style="clear:both"></div>
-        <div class='card-content'>{{city.posts.count}} posts</div>
-        </div>
-        </a>
+
+    <div class='card wayfarer-card'style="width:100%;">
+      <div class='card-title valign-wrapper' style="display:inline-block">
+        <h4>{{city.get_city_name_display}}</h4>
+      </div>
+      <div class='card-image' style="display:inline-block"><img class='cities-sidebar-thumb' src='{{city.get_city_photo_url_display}}' alt=''></div>
+      <div style="clear:both"></div>
+      <div class='card-content'>{{city.posts.count}} posts</div>
+  </div>
+</a>
