@@ -28,7 +28,6 @@
 
         <div class='row'>
           <h4 class="cities-posts-header">Posts</h4>
-          <h5>Posts</h5>
           {% if user.is_authenticated %}
           {% include 'posts/new.html' %}
           {% endif %}
@@ -36,13 +35,11 @@
 
 
           {% for post in city.posts.all reversed %}
-          <div class='row' style='margin-top:0; margin-bottom:0;'>
-          <div class='col s2'>
-          </div>
-          <div class='col s10'>
-          {% include 'posts/post_card.html' with post=post %}
-          </div>
-        </div>
+            <div class='row' style='margin-top:0; margin-bottom:0;'>
+              <div class='col s10'>
+                {% include 'posts/post_card.html' with post=post %}
+              </div>
+            </div>
           {% endfor %}
 
 

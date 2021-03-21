@@ -10,9 +10,13 @@ body {
 
 /* profile styles */
 
+a:visited {
+  color:#fff;
+}
+
 .profile {
   margin-top: 40px;
-  width: 80%;
+  /* width: 80%; */
   margin: 0 auto;
 }
 
@@ -38,18 +42,13 @@ body {
   width:60%;
   background-color:#b3b3b3;
   border-radius:10px;
+  color:#fff;
 }
 
 /* styles from misc */
 
 .container .row {
   margin-top:40px;
-}
-
-.post .card {
-  border:2px solid #777;
-  box-shadow: none;
-  -webkit-box-shadow: none;
 }
 
 a.brand-logo, nav ul a {
@@ -60,21 +59,46 @@ nav ul a {
   font-weight:bold;
 }
 
+/* edit post styles */
+
+.post .card {
+  border:2px solid #777;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+}
+
 a.recent-post {
   background-color: #6d6d6d;
 }
 
-a.post-link {
+a.post-link, .post h4 {
   color:#fff;
 }
 
-.hoverable:hover {
-  box-shadow: 10px 10px #fff;
+.post .card-content {
+  font-size:20px;
+}
+
+
+
+.post .card-content a {
+  background-color:000;
+  border-radius: 5px;
+  padding:10px;
+}
+
+.post .card-content a:hover {
+  background-color:#fff;
+  color:#000;
 }
 
 .post-link:hover {
   box-shadow: 10px 10px grey;
   text-decoration: underline;
+}
+
+i.dp48 {
+  padding-right:10px;
 }
 
 
