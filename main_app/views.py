@@ -1,6 +1,6 @@
 from django.shortcuts import render ,redirect
 from django.contrib.auth import login, get_user_model
-from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from main_app.forms import SignUpForm, EditUserForm, NewPostForm, EditPostForm
 # from django.contrib.auth.models import User
@@ -45,9 +45,7 @@ def new_post(request):
   error_message = ''
   if request.method == 'POST' :
     new_post = NewPostForm(request.POST)
-    print('Im posting========================================')
     if new_post.is_valid():
-      print('Im valid========================================')
       city= new_post.cleaned_data.get('city')
       content = new_post.cleaned_data.get('content')
       title = new_post.cleaned_data.get('title')

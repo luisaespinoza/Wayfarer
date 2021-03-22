@@ -3,15 +3,12 @@
   <!-- Modal Structure -->
   <div id='modal-login' class='modal'>
     <div class='modal-content'>
-
       <form method='post' action='{% url 'login' %}'>
         {% csrf_token %}
         {{ login_form.as_p }}
         <input type='submit' class='btn' value='login'>
         <input type='hidden' name='next' value='{{ next }}'>
       </form>
-
-
     </div>
   </div>
 
