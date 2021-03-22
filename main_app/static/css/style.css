@@ -153,9 +153,25 @@ div.container img {
 .cities-posts-header {
   display:inline-block;
 }
+.card {
+  border-radius: 10px;
+}
+.card-content {
+  color: white;
+}
+.card-title {
+  color: #c6ff00
+}
 
-
-
+.navbar-fixed>nav>div>ul>li>a {
+  color:#c6ff00
+}
+.dialog-content {
+  color: black;
+}
+h4 {
+  color:white;
+}
 /* global styles */
 
 
@@ -177,4 +193,7 @@ div.container img {
 .btn:focus, .btn-floating:focus, .btn-large:focus{
   background-color: #c6ff00;
   color:#263238;
+}
+.btn-del:hover {
+  background-color: #f44336;
 }
