@@ -75,6 +75,7 @@ def edit_post(request, post_id):
     error_message= 'invalid post - try again'
   return redirect('cities')
 
+@login_required
 def delete_post(request, post_id):
   post_to_delete=Post.objects.get(id=post_id)
   post_to_delete.delete()
@@ -124,7 +125,6 @@ def profile_edit(request):
   return render(request, 'index.html', context)
   
 
-@login_required
 def profile(request):
   print(request)
   user = get_user_model().objects.get(username=request.user)
