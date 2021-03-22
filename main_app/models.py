@@ -10,7 +10,7 @@ CITIES = (
 IMG_URLS = (
   ('SF_','https://apexassembly.com/wp-content/uploads/2019/03/San-Francisco-Golden-Gate-Bridge.jpg'),
   ('LND', 'https://imageproxy.themaven.net//https%3A%2F%2Fwww.history.com%2F.image%2FMTYyNDg1MjE3MTI1Mjc5Mzk4%2Ftopic-london-gettyimages-760251843-promo.jpg'),
-  ('GBR', 'Gibralter image URL here.')
+  ('GBR', 'https://rccl-h.assetsadobe.com/is/image/content/dam/royal/data/ports/gibraltar-united-kingdom/overview/gibraltar-united-kingdom-view-from-beach.jpg?$750x320$')
 )
 
 class User(AbstractUser):

@@ -3,8 +3,6 @@
 
 {% block content %}
 <div class='post'>
-
-  <!-- author / city / date created container -->
   <div class="row">
     <h4>Post Details</h4>
     <div class='card wayfarer-card blue-grey' style="width:100%; padding:10px 5px 50px">
@@ -15,18 +13,6 @@
       </div>
     </div>
   </div>
-  <!-- begin the history container / content-->   
-  {% comment %} <div class='row'>
-    <div class='col s12' style='border:2px solid #000;padding:60px; background-color:#a79f9f;'>
-      {% if post_belongs_to_user %}
-      <div class='col s12 history center-align right' style='width:150px; padding:10px; background-color:#ddd; margin-bottom:20px;'> 
-      {% include 'posts/edit.html' %} {% include 'posts/delete.html' %} 
-      </div>
-      {% endif %}
-      <div class='col s12'>{{post.content}}</div>
-    </div> 
-  </div> {% endcomment %}
-
 </div>
 
 
@@ -45,11 +31,6 @@
           <div class='wayfarer-card' style="width:100%;  padding: 20px 10px 80px 20px;">
             <div class="flow-text">
               <i class="material-icons dp48">comment</i>  <span style="font-size:22px;">{{post.content}}</span>
-              {% comment %} <small>{{post.created_at}}</small>
-              {% if post.author.id != request.user.id %}
-              <h6> Author: {{post.author}}</h6>
-              {% endif %} {% endcomment %}
-            </div>
             <div>
             <div class="col" style="padding-top:20px">
               <div class="col s6">{% include 'posts/edit.html' %}</div>
@@ -60,13 +41,6 @@
       </div>
           
       </div>
-
-
-      {% comment %} {% for post in user.posts.all reversed %}
-      {% include 'posts/post_card.html' with post=post%}
-      {% endfor %} {% endcomment %}
-
-
     </div>  
   </div>
 </div>
