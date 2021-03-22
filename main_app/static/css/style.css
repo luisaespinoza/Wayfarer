@@ -1,0 +1,199 @@
+/* dev borders */
+/* .col {
+  border:2px solid red;
+} */
+/* dev borders */
+
+body {
+  background-color:#969696;
+}
+
+/* profile styles */
+
+a:visited {
+  color:#fff;
+}
+
+.profile {
+  margin-top: 40px;
+  /* width: 80%; */
+  margin: 0 auto;
+}
+
+.profile .card {
+  background-color:inherit;
+  color: #c6ff00
+}
+
+.profile .card-content, .profile h4 {
+  color:#fff;
+}
+
+.profile .card-content {
+  font-size:20px;
+}
+
+.profile-edit-card {
+  box-shadow:none;
+}
+
+.wayfarer-card{
+  margin-top:20px;
+  padding:20px;
+  width:60%;
+  background-color:#b3b3b3;
+  border-radius:10px;
+  color:#fff;
+}
+
+.developer-card {
+  height: 320px;
+  width:364px;
+  color: #c6ff00
+}
+
+.developer-thumbnail {
+  width: 164px;
+}
+/* styles from misc */
+
+.container .row {
+  margin-top:40px;
+}
+
+a.brand-logo, nav ul a {
+  color:#c6ff00;
+}
+
+nav ul a {
+  font-weight:bold;
+}
+
+/* edit post styles */
+
+.post .card {
+  border:2px solid #777;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+}
+
+a.recent-post {
+  background-color: #6d6d6d;
+}
+
+a.post-link, .post h4 {
+  color:#fff;
+}
+
+.post .card-content {
+  font-size:20px;
+}
+
+
+
+.post .card-content a {
+  background-color:000;
+  border-radius: 5px;
+  padding:10px;
+}
+
+.post .card-content a:hover {
+  background-color:#fff;
+  color:#000;
+}
+
+.post-link:hover {
+  box-shadow: 10px 10px grey;
+  text-decoration: underline;
+}
+
+i.dp48 {
+  padding-right:10px;
+}
+
+
+
+
+/* Cities page styles */
+
+div.container h4, .cities-sidebar h4 {
+  margin-top:0;
+}
+
+div.container > .row:first-of-type {
+  margin-top:0;
+}
+div.container img {
+  border:2px solid #263238;
+}
+
+.card .card-image img.cities-sidebar-thumb  {
+  width:150px;
+  height:100px;
+}
+
+.cities-post-preview {
+  padding:10px 0 10px 15px;
+}
+
+.cities-sidebar .card .card-content {
+  padding-left:5px;
+  padding-top:10px;
+}
+
+.cities-post-preview .card-content {
+  padding-left:0;
+}
+
+.cities-sidebar .card {
+  padding: 5px 0 0 15px;
+}
+
+
+.cities-posts-header {
+  display:inline-block;
+}
+.card {
+  border-radius: 10px;
+}
+.card-content {
+  color: white;
+}
+.card-title {
+  color: #c6ff00
+}
+
+.navbar-fixed>nav>div>ul>li>a {
+  color:#c6ff00
+}
+.dialog-content {
+  color: black;
+}
+h4 {
+  color:white;
+}
+/* global styles */
+
+
+.btn, .btn-floating, .btn-large{
+  background-color: #607d8b;
+}
+.btn:visited, .btn-floating:visited, .btn-large:visited{
+  background-color: #c6ff00;
+  color:#263238;
+}
+.btn:hover, .btn-floating:hover, .btn-large:hover, .btn-floating.btn-large i:hover, .btn-floating i:hover {
+  background-color: #c6ff00;
+  color:#263238;
+}
+.btn:active, .btn-floating:active, .btn-large:active{
+  background-color:#c6ff00;
+  color:#263238;
+}
+.btn:focus, .btn-floating:focus, .btn-large:focus{
+  background-color: #c6ff00;
+  color:#263238;
+}
+.btn-del:hover {
+  background-color: #f44336;
+}

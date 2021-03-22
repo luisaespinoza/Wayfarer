@@ -1,0 +1,27 @@
+
+
+  <a class='waves-effect waves-light btn modal-trigger' data-target='modal-signup'>Sign Up</a>
+
+  <div id='modal-signup' class='modal'>
+    <div class='modal-content'>
+
+
+      <form id='id_signup' method='post' action='{% url 'signup' %}'>
+        {% csrf_token %}
+        {{ signup_form.as_p }}
+        <input type='submit' class='btn' value='sign up'>
+        <input type='hidden' name='next' value='{{ next }}'>
+      </form>
+
+
+    </div>
+    <div class='modal-footer'>
+      <a href='#!' class='modal-close waves-effect waves-green btn-flat'></a>
+    </div>
+  </div>
+
+  <script>
+    var elems = document.querySelectorAll('.modal');
+    var instances = M.Modal.init(elems, {});
+
+  </script>

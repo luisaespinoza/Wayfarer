@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class='post'>
+  <div class="row">
+    <h4>Post Details</h4>
+    <div class='card wayfarer-card blue-grey' style="width:100%; padding:10px 5px 50px">
+      <div class='card-content flow-text'>
+        <div class="col s3 m3 l3">{{post.title}}&nbsp;&nbsp; |&nbsp;&nbsp; <a href='{% url 'profile' %}'>User:&nbsp;&nbsp;{{post.author}}</a></div> 
+        <div class="col s2 m2 l3 center-align">{{post.city.get_city_name_display}}</div> 
+        <div class="col s7 m7 l6 right-align">Date Created: {{post.created_at}} <br> Date Updated : {{post.updated_at}}</div> 
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<div class='profile' style="">
+  
+  <div class='row'>
+    <div>
+      <div class='history'>
+        <h4>Edit Post</h4>
+      </div>
+      <div class="col s12" style="padding-left:0;">
+          <div class='wayfarer-card' style="width:100%;  padding: 20px 10px 80px 20px;">
+            <div class="flow-text">
+              <i class="material-icons dp48">comment</i>  <span style="font-size:22px;">{{post.content}}</span>
+            <div>
+            <div class="col" style="padding-top:20px">
+              <div class="col s6">{% include 'posts/edit.html' %}</div>
+              <div class="col s6">{% include 'posts/delete.html' %}</div>
+            </div>
+          </div>
+          </div>
+      </div>
+          
+      </div>
+    </div>  
+  </div>
+</div>
+
+{% endblock  %}
+
+

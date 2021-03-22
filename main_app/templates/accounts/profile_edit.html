@@ -1,0 +1,24 @@
+  <a class='waves-effect waves-light btn modal-trigger' data-target='modal-edit-profile'>Edit Profile</a>
+
+  <div id='modal-edit-profile' class='modal'>
+    <div class='modal-content'>
+
+
+      <form id='id_signup' method='post' action='{% url 'profile_edit' %}'>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type='submit' class='btn' value='Save'>
+        <input type='hidden' name='next' value='edit profile'>
+      </form>
+
+
+    </div>
+    <div class='modal-footer'>
+      <a href='#!' class='modal-close waves-effect waves-green btn-flat'></a>
+    </div>
+  </div>
+
+  <script>
+    var elems = document.querySelectorAll('.modal');
+    var instances = M.Modal.init(elems, {});
+  </script>

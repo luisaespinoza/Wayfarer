@@ -1,32 +1,43 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Cat Collector</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css/' %}">
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+  <title>Wayfarer</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css'>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js'></script>
+  <link rel='stylesheet' type='text/css' href="{% static 'css/style.css/' %}">
 </head>
 <body>
-  <header class="navbar-fixed">
-    <nav>
-      <div class="nav-wrapper">
+  <header class='navbar-fixed'>
+    <nav class="blue-grey darken-4">
+      <div class='nav-wrapper'>
         <ul>
-          <li><a href="/" class="left brand-logo">&nbsp;&nbsp;CatCollector</a></li>
+          <li><a href='/' class='left brand-logo'>&nbsp;&nbsp;Wayfarer</a></li>
         </ul>
-        <ul class="right">
-          <li><a href="/about">About</a></li>
+        <ul class='right'>
+          <li><a href='{% url 'about' %}'>About</a></li>
+          <li><a href='{% url 'cities' %}'>Cities</a></li>
+          {% if user.is_authenticated %}
+            <li><a href='{% url 'profile' %}'>Profile</a></li>
+            <li><a href='{% url 'logout' %}'>Log Out</a></li>
+          {% else %}
+            <li>{% include 'registration/signup.html' %}</li>
+            <li>{% include 'registration/login.html' %}</li>
+          {% endif %}
         </ul>
       </div>
-    </nav>
+    </nav>  
   </header>
-  <main class="container">
+  <main class='container'>
     {% block content %}
     {% endblock %}
   </main>
-  <footer class="page-footer">
-    <div class="right">All Rights Reserved, &copy; 2019 Cat Collector &nbsp;</div>
-  </footer>
+  <!-- <footer class='page-footer blue-grey darken-4'>
+    <div class='right'>All Rights Reserved, &copy; Wayfarer &nbsp;</div>
+  </footer> -->
 </body>
 </html>

@@ -1,0 +1,27 @@
+
+  <a class='waves-effect waves-light blue-grey darken-4 btn btn-floating btn-large modal-trigger right' data-target='modal-new-post'><i class="material-icons">add</i></a>
+  <div id='modal-new-post' class='modal'>
+  <div class="modal-title">New Post</div>
+    <div class='modal-content'>
+
+
+      <form id='id_newpost' method='post' action="{% url 'new_post' %}">
+        {% csrf_token %}
+        {{ new_post_form.as_p }}
+        <input type='submit' class='btn' value='post'>
+        <input type='hidden' name='next' value='{{ next }}'>
+      </form>
+
+
+    </div>
+    <div class='modal-footer'>
+      <a href='#!' class='modal-close waves-effect waves-green btn-flat'></a>
+    </div>
+  </div>
+
+  <script>
+    var elems = document.querySelectorAll('.modal');
+    var instances = M.Modal.init(elems, {});
+    const selectEl = document.querySelector('#id_city');
+    M.FormSelect.init(selectEl);
+  </script>

@@ -1,0 +1,9 @@
+        <a class="post-link" href="{% url 'post_details' post.id %}">
+          <div class='wayfarer-card' style="width:100%;">
+            <i class="material-icons dp48">comment</i>  <strong style="font-size:22px;">{{post.title}}</strong><br>
+            <small>{{post.created_at}}</small>
+            {% if post.author.id != request.user.id %}
+            <h6> Author: {{post.author}}</h6>
+            {% endif %}
+          </div>
+        </a>

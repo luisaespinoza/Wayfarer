@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class='row'>
+    <div class='col s4'>
+
+      <div class="cities-sidebar">
+        <h4>Cities</h4>
+        {% for city in cities %}
+        {% include 'cities/city_card.html' with city=city %}
+        {% endfor %}
+      </div>
+    </div>
+    <div class='col s8'>
+      <div class='container'>
+
+        <div class='row'>
+          <div class='col s4'>
+            <h4>{{city.get_city_name_display}}</h4>
+            <h6></h6>
+          </div>
+          <div class='col s8 right right-align'>
+            <img src='{{city.get_city_photo_url_display}}' style='max-width:100%; height:auto;' alt=''>
+          </div>
+        </div>
+
+
+        <div class='row'>
+          <h4 class="cities-posts-header">Posts</h4>
+          {% if user.is_authenticated %}
+          {% include 'posts/new.html' %}
+          {% endif %}
+        </div>
+
+
+          {% for post in city.posts.all reversed %}
+            <div class='row' style='margin-top:0; margin-bottom:0;'>
+              <div class='col s10'>
+                {% include 'posts/post_card.html' with post=post %}
+              </div>
+            </div>
+          {% endfor %}
+
+
+      </div>
+    </div>
+  </div>
+
+
+
+{% endblock  %}
