@@ -1,6 +1,6 @@
 from django.shortcuts import render ,redirect
 from django.contrib.auth import login, get_user_model
-from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from main_app.forms import SignUpForm, EditUserForm, NewPostForm, EditPostForm
 # from django.contrib.auth.models import User
@@ -45,9 +45,7 @@ def new_post(request):
   error_message = ''
   if request.method == 'POST' :
     new_post = NewPostForm(request.POST)
-    print('Im posting========================================')
     if new_post.is_valid():
-      print('Im valid========================================')
       city= new_post.cleaned_data.get('city')
       content = new_post.cleaned_data.get('content')
       title = new_post.cleaned_data.get('title')
@@ -75,6 +73,7 @@ def edit_post(request, post_id):
     error_message= 'invalid post - try again'
   return redirect('cities')
 
+@login_required
 def delete_post(request, post_id):
   post_to_delete=Post.objects.get(id=post_id)
   post_to_delete.delete()
@@ -124,7 +123,6 @@ def profile_edit(request):
   return render(request, 'index.html', context)
   
 
-@login_required
 def profile(request):
   print(request)
   user = get_user_model().objects.get(username=request.user)
